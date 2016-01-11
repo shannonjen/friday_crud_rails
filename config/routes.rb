@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  # You can have the root of your site routed with "root"
-  root 'users#index'
+  
 
+  # You can have the root of your site routed with "root"
+  root 'home#index'
+  get '/search' => 'home#search'
+
+  get '/log-in' => 'sessions#new'
+  post '/log-in' => 'sessions#create'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+ class UsersController < ApplicationController
 	def index
 		@users = User.all
 	end
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
+		puts params.inspect
 		@user = User.new(params[:user])
 	  if @user.save
 	    redirect_to user_path @user
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		puts params.inspect
 		@user = User.find(params[:id])
 	end
 
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@user.update(params[:user])
 		@user.save
-		redirect_to @user
+		redirect_to user_path(@user)
 	end
 
 	def destroy
