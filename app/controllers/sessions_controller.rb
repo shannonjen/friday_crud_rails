@@ -5,17 +5,20 @@ class SessionsController < ApplicationController
 
 	def create
 		puts params.inspect
+		# binding.pry
 		@user = User.where(username: params[:username]).first
+		
 		if @user && @user.password == params[:password]
 			session[:user_id] = @user.id
-			redirect_to root_path
+			redirect_to @user
 		else
-			redirect_to log_in_path
+			render :new
 		end
 
 	end
 
 	def destroy
-
+     session[:user_id] = nil
+     redirect_to home_path
 	end
 end

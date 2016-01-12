@@ -1,1 +1,16 @@
-<h1>Results, Users Found</h1>
+<h1>Users Search Results</h1>
+
+<ul>
+<% @users.each do |user| %>
+  <li>
+    Id: <%= user.id %><br />
+    Username: <%= user.username %><br />
+    Password: <%= user.password %></br />
+
+    <%= link_to "Show", user %>
+    <%= link_to "Edit", edit_user_path(user) %>
+    <%= link_to "Delete", user, method: :delete %>
+  </li>
+  <hr />
+<% end %>
+</ul>
